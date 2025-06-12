@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>My Today Challanges</h1>
+  <input [(ngModel)]='addTask' placeholder="Enter new Task"/><button (click)="onClick()">Add task</button>
+@for(task of Todaytask; track task.id){
+ <span> <h3 [style.color]="task.completed === true ? 'green' : 'red' ">{{task.name}}</h3>
+  <button (click)="toggle(task)" >Completed</button>
+  @if(task.completed === true){
+    <h4 style="color: green;">Taskcompleted</h4>
+  }
+  @else{
+    <h4 style="color: red;">Task is pending</h4>
+  }
+  </span>
+}
+
+</body>
+</html>
