@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Here we will learn Contextual veriables</h1>
+  @for(users of userList;track userList){
+    @if($first){
+  <li style="color: blue;">this is our {{$index}} id no user and name is {{users}}</li>
+    }
+     @if($last){
+  <li style="color: rgb(240, 152, 21);">this is our {{$index}} id no user and name is {{users}}</li>
+    }
+    @if($even){
+      
+  <li style="background-color: rgb(55, 178, 226);">this is our {{$index}} id no user and name is {{users}}</li>
+    
+    }
+     @if($odd){
+      
+  <li style="background-color: rgb(253, 62, 167);">this is our {{$index}} id no user and name is {{users}}</li>
+    
+    }
+  
+    
+  }
+  @empty(){
+    <h3>Array is empty</h3>
+  }
+  <h1>{{EffectSignal()}}</h1>
+  <button (click)="EffectSignal.set('Rozeena')">UpdateUsername
+  </button>
+    <button (click)="Toggle()">Toggle</button>
+
+  @if(displayHeading()){
+  <h2 style="background-color: green;">Toggle value</h2>
+  }
+  <p>{{count()}}</p>
+  <h1>Student Management List</h1>
+
+  <input (input)="addRoll($event)" [value]="id()" placeholder="Enter student Roll No" />
+    <input (input)="addName($event)" [value]="name()" placeholder="Enter student name" />
+  <input (input)="addSubject($event)" [value]="subject()" placeholder="Enter student subject" />
+  <button (click)="addStudent(id(),name(),subject())">Add Student</button>
+
+  <div class="table">
+    <div class="table-header">
+      <div>Student ID</div>
+      <div>Student Name</div>
+      <div>Subject</div>
+    </div>
+    <div class="table-body">
+        @for (student of studentsList(); track student.id){
+        <div class="table-row">
+        <div>{{student.id}}</div>
+        <div>{{student.name}}</div>
+        <div>{{student.subject}}</div><span></span>
+<button (click)="DeleteStudent(student.id)">Delete Student</button>
+    </div>}
+        
+      
+      
+    </div>
+  </div>
+
+</body>
+</html>
